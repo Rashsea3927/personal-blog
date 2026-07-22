@@ -12,15 +12,15 @@ const links = [
   },
   {
     label: "Blog",
-    href: "/blog",
+    href: "/blog/",
   },
   {
     label: "About",
-    href: "/about",
+    href: "/about/",
   },
   {
     label: "NewsLetter",
-    href: "/newsletter",
+    href: "/newsletter/",
   },
 ];
 
@@ -28,9 +28,9 @@ const pathname = Astro.url.pathname;
 ---
 
 <header class="relative mx-auto w-[calc(100%-32px)] max-w-160">
-  <div class="bg-neutral-0 flex items-center justify-between rounded-xl border border-neutral-200 p-[6px] dark:border-neutral-700 dark:bg-neutral-800">
+  <div class="bg-neutral-0 flex items-center justify-between rounded-xl border border-neutral-200 p-1.5 dark:border-neutral-700 dark:bg-neutral-800">
     <Image src={avatar} alt="avatar" class="h-10 w-10 rounded-lg" width={80} height={80} />
-    <div class="flex items-center gap-[6px] sm:gap-5">
+    <div class="flex items-center gap-1.5 sm:gap-5">
       <ToggleThemeButton />
       <ul class="hidden sm:flex sm:gap-6">
         {
@@ -41,7 +41,7 @@ const pathname = Astro.url.pathname;
                 class:list={[
                   "relative transition-colors",
                   isActive
-                    ? ["text-neutral-700", "dark:text-neutral-0", "after:absolute", "after:bottom-0", "after:left-0", "after:h-[3px]", "after:w-full", "after:bg-blue-500"]
+                    ? ["text-neutral-700", "dark:text-neutral-0", "after:absolute", "after:bottom-0", "after:left-0", "after:h-0.75", "after:w-full", "after:bg-blue-500"]
                     : ["text-neutral-600", "dark:text-neutral-400"],
                 ]}
               >
@@ -58,7 +58,7 @@ const pathname = Astro.url.pathname;
     </div>
   </div>
   <div id="menu" class="bg-neutral-0 absolute top-16 left-0 z-10 w-full rounded-xl border border-neutral-200 p-3 sm:hidden dark:border-neutral-700 dark:bg-neutral-800" hidden>
-    <ul class="[&>li:not(:first-child)>a]:pt-2 [&>li:not(:last-child)>a]:pb-[6px]">
+    <ul class="[&>li:not(:first-child)>a]:pt-2 [&>li:not(:last-child)>a]:pb-1.5">
       {
         links.map((link) => (
           <li

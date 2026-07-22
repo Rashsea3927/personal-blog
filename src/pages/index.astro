@@ -42,7 +42,7 @@ const latestBlogs = blogs.slice(0, 5);
           const thumbnail = getBlogThumbnail(blog.slug);
           return (
             <li>
-              <a href={`/blog/${blog.slug}`} class="grid gap-4 sm:grid-cols-[0.4fr_1fr]">
+              <a href={`/blog/${blog.slug}/`} class="grid gap-4 sm:grid-cols-[0.4fr_1fr]">
                 <Image src={thumbnail} width={640} height={427} class="h-auto max-h-37.5 w-full rounded-sm object-cover object-top" alt="" />
                 <div>
                   <h3 class="dark:text-neutral-0 mb-2 text-xl leading-tight font-semibold tracking-[-0.5px] text-neutral-700">{blog.title}</h3>
