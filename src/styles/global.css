@@ -30,6 +30,26 @@
   navigation: auto;
 }
 
+::view-transition-old(root) {
+  animation: fade-out 0.2s ease;
+}
+
+::view-transition-new(root) {
+  animation: fade-in 0.2s ease;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
 .progress-bar {
   position: fixed;
   top: 0;
