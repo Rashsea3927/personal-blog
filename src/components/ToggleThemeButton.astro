@@ -1,0 +1,18 @@
+---
+import IconMenu from "@components/icons/IconMenu.astro";
+import IconClose from "@components/icons/IconClose.astro";
+---
+
+<button type="button" data-open="false" id="toggle-menu" class="grid size-10 place-items-center rounded-xl sm:hidden">
+  <IconMenu classname="" strokeColor="stroke-neutral-700 dark:stroke-neutral-0" />
+  <IconClose classname="hidden" strokeColor="stroke-neutral-0 dark:stroke-neutral-900" />
+</button>
+
+<script is:inline>
+  function handleApplyTheme() {
+    localStorage.theme === "dark" ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark");
+  }
+
+  // document.addEventListener("astro:after-swap", handleApplyTheme);
+  handleApplyTheme();
+</script>

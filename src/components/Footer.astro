@@ -1,0 +1,50 @@
+---
+import IconFem from "@components/icons/IconFem.astro";
+import IconGithub from "@components/icons/IconGithub.astro";
+import IconLinkedIn from "@components/icons/IconLinkedIn.astro";
+import IconX from "@components/icons/IconX.astro";
+
+const socials = [
+  {
+    name: "x",
+    icon: IconX,
+    href: "",
+  },
+  {
+    name: "github",
+    icon: IconGithub,
+    href: "",
+  },
+  {
+    name: "linkedin",
+    icon: IconLinkedIn,
+    href: "",
+  },
+  {
+    name: "frontend-mentor",
+    icon: IconFem,
+    href: "",
+  },
+];
+---
+
+<footer class="px-[9px] pb-5 sm:px-5">
+  <div class="flex items-center justify-between border-t border-neutral-200 pt-4 dark:border-neutral-700">
+    <p class="dark:text-neutral-0 text-base leading-tight tracking-[-0.2px] text-neutral-700">Made with ❤️ and ☕️</p>
+    <ul class="flex items-center gap-4">
+      {
+        socials.map((social) => {
+          const Icon = social.icon;
+
+          return (
+            <li>
+              <a href={social.href}>
+                <Icon classname="fill-neutral-600 dark:fill-neutral-400" />
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</footer>

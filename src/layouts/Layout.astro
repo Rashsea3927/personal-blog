@@ -1,23 +1,38 @@
+---
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import "@styles/global.css";
+import { Font } from "astro:assets";
+// import { ClientRouter } from "astro:transitions";
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" />
+    <meta name="generator" content={Astro.generator} />
+    <Font cssVariable="--font-dmsans" />
+    <title>Personal Blog Website</title>
+    <!-- <ClientRouter /> -->
+  </head>
+  <body class="font-dmsans min-h-screen bg-neutral-100 pt-4 sm:pt-5 dark:bg-neutral-900">
+    <Header />
+    <div class="relative mx-auto min-h-screen w-[calc(100%-40px)] max-w-160 pt-8">
+      <div class="absolute -top-1 left-1/2 -z-1 h-[calc(100%+4px)] w-full max-w-155 -translate-x-1/2 border-x border-neutral-200 sm:top-0 sm:h-full dark:border-neutral-700"></div>
+      <main class="px-2.25 sm:px-5">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<script>
+  import { handleToggleMenu } from "@scripts/toggle-menu";
+  import { handleToggleClick } from "@scripts/toggle-theme";
+
+  document.getElementById("toggle-theme")?.addEventListener("click", handleToggleClick);
+  document.getElementById("toggle-menu")?.addEventListener("click", handleToggleMenu);
+</script>

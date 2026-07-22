@@ -1,0 +1,45 @@
+---
+import IconFem from "@components/icons/IconFem.astro";
+import IconGithub from "@components/icons/IconGithub.astro";
+import IconLinkedIn from "@components/icons/IconLinkedIn.astro";
+import IconX from "@components/icons/IconX.astro";
+
+const socials = [
+  {
+    name: "x",
+    icon: IconX,
+    href: "",
+  },
+  {
+    name: "github",
+    icon: IconGithub,
+    href: "",
+  },
+  {
+    name: "linkedin",
+    icon: IconLinkedIn,
+    href: "",
+  },
+  {
+    name: "frontend-mentor",
+    icon: IconFem,
+    href: "",
+  },
+];
+---
+
+<ul class="flex items-center gap-3">
+  {
+    socials.map((social) => {
+      const Icon = social.icon;
+
+      return (
+        <li>
+          <a href={social.href} class="bg-neutral-0 grid size-10 place-items-center rounded-xl border border-neutral-200 dark:border-neutral-700 dark:bg-neutral-800">
+            <Icon classname="fill-neutral-700 dark:fill-neutral-0" />
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>

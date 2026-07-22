@@ -1,0 +1,12 @@
+---
+interface Props {
+  html: string;
+}
+
+const { html } = Astro.props;
+---
+
+<article
+  class="prose prose-neutral prose-hr:first:my-6 prose-hr:my-8 prose-table:block prose-pre:bg-neutral-200 prose-table:max-w-full prose-table:overflow-x-auto dark:prose-invert max-w-none"
+  set:html={html}
+/>
