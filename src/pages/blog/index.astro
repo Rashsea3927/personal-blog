@@ -6,6 +6,16 @@ import { getBlogThumbnail } from "@lib/images";
 import { Image } from "astro:assets";
 ---
 
+<style is:inline>
+  ::view-transition-old(root) {
+    animation: none;
+  }
+
+  ::view-transition-new(root) {
+    animation: none;
+  }
+</style>
+
 <Layout>
   <section class="space-y-1.5 border-b border-neutral-200 pb-6 dark:border-neutral-700">
     <h1 class="dark:text-neutral-0 text-3xl leading-tight font-extrabold tracking-[-0.5px] text-neutral-700">My Articles</h1>
@@ -17,15 +27,19 @@ import { Image } from "astro:assets";
         const thumbnail = getBlogThumbnail(blog.slug);
         return (
           <article class="border-neutral-200 py-5 not-last:border-b dark:border-neutral-700">
-            <a href={`/blog/${blog.slug}/`} class="grid gap-4 sm:grid-cols-[0.5fr_1fr]">
-              <Image
-                class="h-auto max-h-37.5 w-full rounded-sm object-cover object-top"
-                style={`view-transition-name: thumbnail-${blog.slug};`}
-                src={thumbnail}
-                alt={blog.title}
-                width={640}
-                height={427}
-              />
+            <a href={`/blog/${blog.slug}/`} class="grid gap-4 sm:grid-cols-[0.5fr_1fr]" data-astro-prefetch>
+              <div style={`view-transition-name: thumbnail-${blog.slug};`}>
+                <Image
+                  class="h-auto max-h-37.5 w-full rounded-sm object-cover object-top"
+                  src={thumbnail}
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="sync"
+                  alt={blog.title}
+                  width={640}
+                  height={427}
+                />
+              </div>
               <div class="space-y-2">
                 <h2 class="dark:text-neutral-0 line-clamp-2 overflow-hidden text-xl leading-tight font-semibold tracking-[-0.5px] text-ellipsis text-neutral-700">{blog.title}</h2>
                 <p class="text-base leading-tight font-normal tracking-[-0.2px] text-neutral-600 italic dark:text-neutral-400">{formatDate(blog.publishedAt)}</p>

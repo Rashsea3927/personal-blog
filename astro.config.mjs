@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  prefetch: true,
   fonts: [
     {
       name: "DM Sans",
@@ -15,6 +16,9 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    css: {
+      transformer: "postcss",
+    },
   },
   trailingSlash: "always",
 });

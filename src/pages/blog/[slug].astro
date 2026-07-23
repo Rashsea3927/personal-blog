@@ -22,10 +22,22 @@ const html = await parseMarkdown(blog?.content!);
 const thumbnail = getBlogThumbnail(slug);
 ---
 
+<style is:inline>
+  ::view-transition-old(root) {
+    animation: none;
+  }
+
+  ::view-transition-new(root) {
+    animation: none;
+  }
+</style>
+
 <Layout>
-  <div class="progress-bar"></div>
+  <div class="progress-bar" style="animation-timeline: scroll();"></div>
   <section class="space-y-4 sm:space-y-3">
-    <Image class="rounded-lg" style={`view-transition-name: thumbnail-${blog?.slug};`} src={thumbnail} width="640" height="427" alt="" />
+    <div style={`view-transition-name: thumbnail-${slug};`}>
+      <Image class="rounded-lg" src={thumbnail} width="640" loading="eager" decoding="sync" fetchpriority="high" height="427" alt="" />
+    </div>
     <h1 class="dark:text-neutral-0 text-5xl leading-tight font-extrabold tracking-[-1px] text-neutral-700">{blog?.title}</h1>
     <p class="mb-4 text-base leading-tight font-normal tracking-[-0.2px] text-neutral-600 italic sm:mb-3 dark:text-neutral-400">{formatDate(blog?.publishedAt!)}</p>
   </section>
