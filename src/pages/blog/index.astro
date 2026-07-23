@@ -6,16 +6,6 @@ import { getBlogThumbnail } from "@lib/images";
 import { Image } from "astro:assets";
 ---
 
-<style is:inline>
-  ::view-transition-old(root) {
-    animation: none;
-  }
-
-  ::view-transition-new(root) {
-    animation: none;
-  }
-</style>
-
 <Layout>
   <section class="space-y-1.5 border-b border-neutral-200 pb-6 dark:border-neutral-700">
     <h1 class="dark:text-neutral-0 text-3xl leading-tight font-extrabold tracking-[-0.5px] text-neutral-700">My Articles</h1>
@@ -30,7 +20,7 @@ import { Image } from "astro:assets";
             <a href={`/blog/${blog.slug}/`} class="grid gap-4 sm:grid-cols-[0.5fr_1fr]" data-astro-prefetch>
               <div style={`view-transition-name: thumbnail-${blog.slug};`}>
                 <Image
-                  class="h-auto max-h-37.5 w-full rounded-sm object-cover object-top"
+                  class="aspect-3/2 h-auto w-full rounded-sm object-cover object-top"
                   src={thumbnail}
                   loading="eager"
                   fetchpriority="high"
